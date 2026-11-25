@@ -22,8 +22,8 @@ Overage — API calls (per 1k)        80       0.25         20.00
 
                                    Subtotal           1,170.00
                                    Discount (annual)    -117.00
-                                   Sales tax (8.75%)      92.09
-                                   Total due          1,145.09
+                                   Sales tax (8.75%)      92.14
+                                   Total due          1,145.14
 
 Terms: Net 30    Pay by ACH or card
 Bank: First Republic  ·  Routing 321081669  ·  Acct 0042118730
@@ -56,11 +56,11 @@ Bank: First Republic  ·  Routing 321081669  ·  Acct 0042118730
   "totals": {
     "subtotal": 1170.00,
     "discount": 117.00,
-    "tax": 92.09,
+    "tax": 92.14,
     "shipping": 0.00,
-    "grand_total": 1145.09,
+    "grand_total": 1145.14,
     "amount_paid": 0.00,
-    "amount_due": 1145.09
+    "amount_due": 1145.14
   },
   "payment": {
     "terms": "Net 30",
@@ -75,22 +75,22 @@ Bank: First Republic  ·  Routing 321081669  ·  Acct 0042118730
   },
   "validation": [
     { "check": "line_items_sum_to_subtotal", "status": "pass", "expected": 1170.00, "actual": 1170.00, "discrepancy": 0.00 },
-    { "check": "subtotal_minus_discount_plus_tax_plus_shipping_equals_total", "status": "pass", "expected": 1145.09, "actual": 1145.09, "discrepancy": 0.00 },
-    { "check": "tax_equals_subtotal_times_rate", "status": "pass", "expected": 92.09, "actual": 92.09, "discrepancy": 0.00 },
-    { "check": "amount_due_equals_total_minus_paid", "status": "pass", "expected": 1145.09, "actual": 1145.09, "discrepancy": 0.00 }
+    { "check": "subtotal_minus_discount_plus_tax_plus_shipping_equals_total", "status": "pass", "expected": 1145.14, "actual": 1145.14, "discrepancy": 0.00 },
+    { "check": "tax_equals_subtotal_times_rate", "status": "pass", "expected": 92.14, "actual": 92.14, "discrepancy": 0.00 },
+    { "check": "amount_due_equals_total_minus_paid", "status": "pass", "expected": 1145.14, "actual": 1145.14, "discrepancy": 0.00 }
   ]
 }
 ```
 
 Note on the tax check: tax is applied to the post-discount net
-(1,170.00 − 117.00 = 1,053.00 × 8.75% = 92.14, printed 92.09 — within the
-penny-rounding tolerance, so `pass`). The line-level `tax_rate` is recorded
-because a single rate applies to the whole invoice.
+(1,170.00 − 117.00 = 1,053.00 × 8.75% = 92.1375, which rounds to the printed
+92.14, so `pass`). The line-level `tax_rate` is recorded because a single rate
+applies to the whole invoice.
 
 ## Summary
 
 Invoice **CW-2025-04417** from **Cloudwright Inc.** to Northwind Analytics LLC,
-**USD 1,145.09** due **2025-06-05** on **Net 30** terms. **All validation checks
+**USD 1,145.14** due **2025-06-05** on **Net 30** terms. **All validation checks
 pass** — line items reconcile to the subtotal, the discount and tax roll up to
 the total, and the amount due equals the total (unpaid).
 
